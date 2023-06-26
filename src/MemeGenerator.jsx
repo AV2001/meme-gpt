@@ -8,7 +8,9 @@ const MemeGenerator = () => {
     const getData = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`${process.env.BACKEND_URL}/openai`);
+            const response = await fetch(
+                `${import.meta.env.VITE_BACKEND_URL}/openai`
+            );
             const body = await response.json();
             const meme = body.content;
             setResult(meme);
