@@ -6,20 +6,29 @@ const MemeGenerator = () => {
     const [error, setError] = useState('');
 
     const getData = async () => {
+        setLoading(true);
+        let responseClone;
         try {
-            setLoading(true);
             const response = await fetch(
                 `${import.meta.env.VITE_BACKEND_URL}/openai`
             );
+            responseClone = response.clone();
             const body = await response.json();
             const meme = body;
             setResult(meme);
-            setLoading(false);
             setError('');
         } catch (error) {
-            console.log(error);
-            setLoading(false);
+            console.log('Error parsing JSON from response:', error);
+            if (responseClone) {
+                const bodyText = await responseClone.text();
+                console.log(
+                    'Received the following instead of valid JSON:',
+                    bodyText
+                );
+            }
             setError('Oops!');
+        } finally {
+            setLoading(false);
         }
     };
 
