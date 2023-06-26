@@ -12,11 +12,12 @@ const MemeGenerator = () => {
                 `${import.meta.env.VITE_BACKEND_URL}/openai`
             );
             const body = await response.json();
-            const meme = body.content;
+            const meme = body;
             setResult(meme);
             setLoading(false);
             setError('');
         } catch (error) {
+            console.log(error);
             setLoading(false);
             setError('Oops!');
         }
@@ -45,8 +46,6 @@ const MemeGenerator = () => {
             </div>
         );
     };
-
-    console.log(result);
 
     return (
         <>
