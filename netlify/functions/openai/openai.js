@@ -25,7 +25,7 @@ const handler = async (event) => {
                 {
                     role: 'user',
                     content:
-                        'Generate simple text for a meme in the context I provided.',
+                        'Generate simple text for a meme in the context I provided and make sure that you break the internet.',
                 },
             ],
         });
