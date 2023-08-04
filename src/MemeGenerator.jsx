@@ -21,7 +21,6 @@ const MemeGenerator = ({ apiKey }) => {
             );
             responseClone = response.clone();
             const body = await response.json();
-            console.log(body);
             const meme = body;
             setResult(meme);
             setError('');
