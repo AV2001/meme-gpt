@@ -83,6 +83,22 @@ p {
     margin-bottom: 0;
 }
 
+input {
+    border: none;
+    outline: 2px solid transparent;
+    font-family: inherit;
+    font-size: 18px;
+    padding: 16px;
+    width: 50%;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    transition: outline 0.3s;
+}
+
+input:focus {
+    outline: 2px solid #ee2b47;
+}
+
 .spinner {
     border: 16px solid #f3f3f3;
     border-top: 16px solid #ee2b47;
