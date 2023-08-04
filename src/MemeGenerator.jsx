@@ -7,7 +7,6 @@ const MemeGenerator = ({ apiKey }) => {
 
     const getData = async () => {
         setLoading(true);
-        let responseClone;
         try {
             const response = await fetch(
                 `${import.meta.env.VITE_BACKEND_URL}openai`,
@@ -19,21 +18,21 @@ const MemeGenerator = ({ apiKey }) => {
                     body: JSON.stringify({ apiKey: apiKey }),
                 }
             );
-            responseClone = response.clone();
+
+            // Check if the status code is 401
+            if (response.status === 401) {
+                const errorData = await response.json();
+                alert(errorData.error); // Alert the error message
+                return; // Exit the function early
+            }
+
             const body = await response.json();
             const meme = body;
             setResult(meme);
             setError('');
         } catch (error) {
-            console.log('Error parsing JSON from response:', error);
-            if (responseClone) {
-                const bodyText = await responseClone.text();
-                console.log(
-                    'Received the following instead of valid JSON:',
-                    bodyText
-                );
-            }
-            setError('Oops!');
+            console.error('An error occurred:', error);
+            alert('An unexpected error occurred.');
         } finally {
             setLoading(false);
         }
