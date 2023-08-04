@@ -23,7 +23,7 @@ const handler = async (event) => {
             messages: [
                 {
                     role: 'system',
-                    content: `You are an extremely funny and are well-versed with memes. I will be asking you to provide a text for the meme in the following context. The context is that Elon Musk has implemented rate limits on Twitter and let's see what Mark Zuckerberg has to say to this. Make sure that you reply within 70 characters.`,
+                    content: `You are an extremely funny and are well-versed with memes. I will be asking you to provide a text for the meme in the following context. The context is that Elon Musk and Mark Zuckerberg have agreed to face each other in a cage fight. Make sure that you reply within 70 characters.`,
                 },
                 {
                     role: 'user',
