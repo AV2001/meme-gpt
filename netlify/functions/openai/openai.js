@@ -41,7 +41,18 @@ const handler = async (event) => {
             },
         };
     } catch (error) {
-        console.log(error);
+        if (error.response && error.response.status === 401) {
+            return {
+                statusCode: 401,
+                body: JSON.stringify({
+                    error: 'You have provided an invalid API key.',
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+        }
+
         return {
             statusCode: 500,
             body: JSON.stringify({ error: 'Failed to connect to OpenAI' }),
