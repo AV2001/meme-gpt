@@ -20,7 +20,7 @@ const App = () => {
                     </p>
                     <input
                         type='text'
-                        placeholder='Enter your OpenAI API Key'
+                        placeholder='Enter OpenAI API Key'
                         value={apiKey}
                         onChange={(e) => setApiKey(e.target.value)}
                     />
